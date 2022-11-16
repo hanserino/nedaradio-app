@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+/build
+/assets
+out/
+.DS_Store

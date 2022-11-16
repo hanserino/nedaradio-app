@@ -1,0 +1,58 @@
+.audioContainer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: .5rem;
+    z-index: 5;
+    transform: translate(0,0);
+    opacity: 0;
+    background-color: white;
+    color: black;
+    box-shadow: -1px 0px 9px 3px rgb(0 0 0 / 20%);
+    transition: .25s all ease-in-out 0s;
+}
+
+#currently {
+    display: block;
+    margin: .25rem 0 .5rem 0;  
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#currently a {
+    font-size: .85rem;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+[data-audio-playing="true"] #currently a {
+    
+}
+
+[data-audio-playing="false"] #currently a {
+    
+}
+
+
+.audioplayer {
+    display: block;
+    height: 3rem;
+    width: 100%;
+}
+
+[data-audio-playing="true"] .audioContainer {
+    
+}
+ 
+[data-audio-init="false"] .audioContainer {
+    transform: translate(0, 100%);
+}
+
+[data-audio-init="true"] .audioContainer {
+    transform: translate(0,0);
+    opacity: 1;
+}
+
+

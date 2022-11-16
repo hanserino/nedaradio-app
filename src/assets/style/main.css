@@ -1,0 +1,260 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: sans-serif;
+    line-height: 1.25;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+img {
+    height: auto;
+    display: block;
+}
+
+ul.feed{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.feedItem{
+    position: relative;
+    display: block;
+    border: 1px solid;
+    width: 100%;    
+}
+.feedItem.active .newAudio {
+    border: .5rem solid green;
+}
+
+.feedItem img{
+    width: 100%;
+}
+
+@media only screen and (min-width: 320px) {
+    .feedItem {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .feedItem.active{
+        /* width: 100%; */
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .feedItem{width: calc(100%/3);}
+    .feedItem.active .newAudio {border-width: 1rem;}
+}
+@media only screen and (min-width: 1200px) {
+    .feedItem{width: calc(100%/4);}
+}
+@media only screen and (min-width: 1800px) {
+    .feedItem{width: calc(100%/5);}
+}
+
+
+.feedItem figure {
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.newAudio {
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+    mix-blend-mode: plus-lighter;
+    opacity: 0.65;
+}
+
+.newAudio:hover {
+    /* background: rgba(255,255,255,.5); */
+}
+
+
+.icon {
+    display: inline-block;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.button-icons{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.newAudio .icon {
+    width: 4rem;
+    height: 4rem;
+    display: none;
+}
+
+.newAudio:hover .icon-play2 {
+    display: block;
+}
+
+[data-audio-playing="true"] .feedItem.active .icon-pause { 
+    display: block;
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+}
+
+[data-audio-playing="true"] .feedItem.active .icon-play2 {display: none;}
+[data-audio-playing="true"] .feedItem.active .newAudio:hover .icon-play2 {display: none;}
+
+[data-audio-playing="false"] .feedItem.active .newAudio .icon-play2,
+[data-audio-playing="false"] .feedItem.active .newAudio:hover .icon-play2 {display: block;}
+
+[data-audio-playing="false"] .feedItem.active .newAudio:hover .icon-pause {
+    animation-play-state: paused;
+    display: none;
+}
+
+@keyframes spin {
+    100%{transform: rotate(360deg)}
+}
+
+.logoutbtn{
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    background: black;
+    color: white;
+    padding: .8rem;
+    display: none;
+}
+
+.login{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('./img/neda-poster.jpg') no-repeat top center;
+    background-size: cover;
+}
+
+.login:before {
+    content: "";
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(15px);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.login-form-container{
+    position: relative;
+    z-index: 3;
+    max-width: 300px;
+    width: calc(100% - 2rem);
+}
+
+.info-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    z-index: 5;
+    outline: 0;
+    border: 0;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+[data-touch="false"] .info-button{
+    transition: .5s opacity 0s linear;
+    opacity: .3;
+}
+
+[data-touch="false"] .feedItem:hover .info-button{
+    opacity: .8;
+}
+
+[data-touch="true"] .info-button,
+[data-touch="false"] .info-button:hover {
+    opacity: 1;
+}
+
+.info-button  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.feedItem .title {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    padding: 3rem 1rem;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .85);
+    color: white;
+}
+
+.feedItem .title {
+    display: none;
+}
+
+.feedItem.active-info .title {
+    display: block;
+}
+
+.feedItem .timestamp{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    font-style: italic;
+    opacity: .75;
+    display: none;
+}
+
+.feedItem.active-info .timestamp{
+    display: block;
+}
+
+.searchbar{
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+}

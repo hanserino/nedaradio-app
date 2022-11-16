@@ -1,0 +1,21 @@
+{
+  "name": "NEDARADIO",
+  "version": "1.0.0",
+  "description": "nedaradio",
+  "main": "src/main-electron.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . NEDARADIO --overwrite --platform=darwin --arch=x64 --icon=src/assets/img/icons/mac/icon@1x.icns --prune=true --out=build",
+    "package-win": "electron-packager . NEDARADIO --overwrite --asar --platform=win32 --arch=ia32 --icon=src/assets/img/icons/win/icon.png --prune=true --out=build --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"NEDARADIO\"",    
+    "package-linux": "electron-packager . NEDARADIO --overwrite --asar --platform=linux --arch=x64 --icon=src/assets/img/icons/linux/1024x1024.png --prune=true --out=build"
+  },
+  "author": "hanserino",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^21.2.3",
+    "electron-packager": "^17.1.1"
+  },
+  "dependencies": {
+    
+  }
+}
